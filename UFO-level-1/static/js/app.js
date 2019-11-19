@@ -2,3 +2,34 @@
 var tableData = data;
 
 // YOUR CODE HERE!
+var input_text = d3.select("#datetime");
+var form = d3.select("form");
+//var table = d3.select("table");
+var tableBody = d3.select("tbody");
+
+
+function handleChange(event){
+	var input_date = d3.event.target.value;
+	// console.log(input_date);
+	tableBody.selectAll("tr").remove();
+	loadTable(input_date);
+};
+
+input_text.on("change", handleChange);
+
+function loadTable(input_date){
+	tableData.forEach(function(entry){
+		//console.log(entry["shape"]);
+		if (entry["datetime"] === input_date){
+			//console.log(entry);
+			var tableRow = tableBody.append("tr");
+
+			Object.entries(entry).forEach(function([key, value]) {
+    			//console.log(key, value);
+    			tableRow.append("td").text(value);
+  			});	
+		};
+		
+	});
+};
+
