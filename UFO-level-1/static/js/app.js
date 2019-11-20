@@ -6,7 +6,7 @@ var input_text = d3.select("#datetime");
 var form = d3.select("form");
 //var table = d3.select("table");
 var tableBody = d3.select("tbody");
-
+var button = d3.select("#button");
 
 function handleChange(event){
 	var input_date = d3.event.target.value;
@@ -16,6 +16,8 @@ function handleChange(event){
 };
 
 input_text.on("change", handleChange);
+
+button.on("click", handleChange);
 
 function loadTable(input_date){
 	tableData.forEach(function(entry){
